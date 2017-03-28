@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/appCompatImageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/shopingListName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:inputType="text"
+                android:text="List zakupów 1"
+                android:textAlignment="center"
+                android:layout_weight="98.75" />
+
+            <LinearLayout
+                android:layout_width="98dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="7.96"
+                    android:text="Sum:"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="9.95"
+                    android:text="123.45"
+                    android:textAlignment="center" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="217dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.46">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Quantity"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Product"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Price"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+            </TableRow>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_weight="0.21">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </FrameLayout>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/appCompatImageButton6"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_weight="0.25"
+        android:adjustViewBounds="false" />
+
+</LinearLayout>
