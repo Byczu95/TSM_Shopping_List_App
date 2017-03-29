@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:orientation="horizontal">
 
+        <!-- TAK WYGLĄDA KOD OD REKLAMY TAK BY THE WAY A NIE PRZYCISK Z OBRAZKIEM ;P <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/query_activity_ad_id">
+        </com.google.android.gms.ads.AdView>-->
+
 
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/appCompatImageButton2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:orientation="horizontal"
-            android:weightSum="100">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-            <EditText
-                android:id="@+id/shopingListName"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/shopingListName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:text="List zakupów 1"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:layout_marginTop="2dp"
-                android:inputType="text"
-                android:text="List zakupów 1"
-                android:textAlignment="center"
-                android:layout_weight="98.75" />
+                android:text="Sum:"
+                android:textAlignment="center" />
 
-            <LinearLayout
-                android:layout_width="98dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="7.96"
-                    android:text="Sum:"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="9.95"
-                    android:text="123.45"
-                    android:textAlignment="center" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="123.45"
+                android:textAlignment="center" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="217dp"
         android:orientation="horizontal"
-        android:layout_weight="0.46">
+        android:layout_weight="3">
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -71,7 +85,6 @@
 
             <TableRow
                 android:layout_width="match_parent"
-
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
@@ -94,27 +107,45 @@
                     android:textColor="#000" />
 
             </TableRow>
+
         </ScrollView>
 
     </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_weight="0.21">
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        >
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-    </FrameLayout>
+            android:text="Dodaj produkt"
+            android:layout_weight="1"/>
 
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/appCompatImageButton6"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Zatwierdz"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_weight="0.25"
-        android:adjustViewBounds="false" />
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center_horizontal"
+        >
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/appCompatImageButton6"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:adjustViewBounds="false" />
+
+    </LinearLayout>
 
 </LinearLayout>
