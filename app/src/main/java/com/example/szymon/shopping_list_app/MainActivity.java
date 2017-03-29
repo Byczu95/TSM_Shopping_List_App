@@ -1,4 +1,4 @@
-package com.example.szymon.shoping_list_app;
+package com.example.szymon.shopping_list_app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

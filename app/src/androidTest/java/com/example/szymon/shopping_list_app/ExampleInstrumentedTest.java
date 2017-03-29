@@ -1,4 +1,4 @@
-package com.example.szymon.shoping_list_app;
+package com.example.szymon.shopping_list_app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
