@@ -31,44 +31,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="1">
 
-        <EditText
-            android:id="@+id/shoppingListName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_weight="2"
-            android:inputType="text"
-            android:text="Shopping List 1"
-            android:textAlignment="center" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            >
+            android:text="Main Image here"
+            android:padding="2dp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="30sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="Sum:"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/textViewSum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="123.45"
-                android:textAlignment="center" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -88,26 +62,24 @@
 
                 <TextView
                     android:layout_weight="1"
-                    android:text="Quantity"
+                    android:text="Name"
                     android:textAlignment="center"
                     android:textColor="#000" />
 
                 <TextView
                     android:layout_weight="1"
-                    android:text="Product"
+                    android:text="Date of adding"
                     android:textAlignment="center"
                     android:textColor="#000" />
 
                 <TextView
                     android:layout_weight="1"
-                    android:text="Price"
+                    android:text="Edit"
                     android:textAlignment="center"
                     android:textColor="#000" />
 
             </TableRow>
-
         </ScrollView>
-
     </LinearLayout>
 
     <LinearLayout

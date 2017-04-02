@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,80 +33,56 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
-        <EditText
+        <TextView
             android:id="@+id/shoppingListName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
-            android:layout_weight="2"
             android:inputType="text"
             android:text="Shopping List 1"
-            android:textAlignment="center" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="Sum:"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/textViewSum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="123.45"
-                android:textAlignment="center" />
-        </LinearLayout>
+            android:textAlignment="center"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="217dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/newProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:text="Product name here"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
+        <EditText
+            android:id="@+id/newProductQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:text="Product quantity here"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Quantity"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Product"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Price"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-            </TableRow>
-
-        </ScrollView>
+        <EditText
+            android:id="@+id/newProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:text="Product price here (optional)"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -118,18 +94,17 @@
         >
 
         <Button
-            android:id="@+id/buttonAddProduct"
+            android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add product"
+            android:text="Add to list"
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/buttonSaveList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Save list"/>
+            android:text="Back"/>
 
     </LinearLayout>
 
