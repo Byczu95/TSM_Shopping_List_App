@@ -28,5 +28,6 @@ public class AddNewListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddNewProduct.class);
         intent.putExtra("ExtraListName", editText.getText().toString());
         startActivity(intent);
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
