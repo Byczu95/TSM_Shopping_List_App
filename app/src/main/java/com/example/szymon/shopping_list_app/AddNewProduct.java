@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class AddNewProduct extends AppCompatActivity {
 
     TextView textView;
+    String listName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,9 @@ public class AddNewProduct extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.shoppingListNameAP);
 
         textView.setText("Shopping List 1");
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String listName = (String) extras.getSerializable("ExtraListName");
+        listName = (String) getIntent().getSerializableExtra("ExtraListName");
+        if(listName != null) {
             textView.setText(listName);
         }
-
-
     }
 }

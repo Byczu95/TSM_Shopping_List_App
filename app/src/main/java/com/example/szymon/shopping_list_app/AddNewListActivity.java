@@ -26,7 +26,7 @@ public class AddNewListActivity extends AppCompatActivity {
     public void onClickAddProduct(View v)
     {
         Intent intent = new Intent(this, AddNewProduct.class);
-        intent.putExtra("ExtraListName",editText.getText());
+        intent.putExtra("ExtraListName", editText.getText().toString());
         startActivity(intent);
     }
 }
