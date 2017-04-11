@@ -34,13 +34,12 @@
         android:weightSum="3">
 
         <TextView
-            android:id="@+id/shoppingListName"
+            android:id="@+id/shoppingListNameAP"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
             android:inputType="text"
-            android:text="Shopping List 1"
             android:textAlignment="center"
             android:textSize="24sp" />
     </LinearLayout>
@@ -52,7 +51,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/newProductName"
+            android:id="@+id/newProductNameAP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -63,7 +62,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/newProductQuantity"
+            android:id="@+id/newProductQuantityAP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -74,7 +73,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/newProductPrice"
+            android:id="@+id/newProductPriceAP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

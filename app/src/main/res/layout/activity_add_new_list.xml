@@ -34,14 +34,13 @@
         android:weightSum="3">
 
         <EditText
-            android:id="@+id/shoppingListName"
+            android:id="@+id/shoppingListNameAL"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
             android:layout_weight="2"
             android:inputType="text"
-            android:text="Shopping List 1"
             android:textAlignment="center" />
 
         <LinearLayout
@@ -111,25 +110,25 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
-        >
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <Button
-            android:id="@+id/buttonAddProduct"
+            android:id="@+id/buttonAddProductAL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add product"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onClickAddProduct"
+            android:text="Add product" />
 
         <Button
             android:id="@+id/buttonSaveList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Save list"/>
+            android:text="Save list" />
 
     </LinearLayout>
 
