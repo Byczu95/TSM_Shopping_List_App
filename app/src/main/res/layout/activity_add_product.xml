@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:inputType="text"
-            android:text="Product quantity here"
+            android:inputType="numberDecimal"
+            android:text="Product quantity here (default 1)"
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:inputType="text"
+            android:inputType="number"
             android:text="Product price here (optional)"
             android:textAlignment="center"
             android:textSize="20sp" />

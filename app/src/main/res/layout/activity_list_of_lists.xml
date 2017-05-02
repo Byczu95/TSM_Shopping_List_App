@@ -46,42 +46,38 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <TableLayout
+        android:id="@+id/tableALOL"
         android:layout_width="match_parent"
         android:layout_height="217dp"
         android:orientation="horizontal"
-        android:layout_weight="3">
+        android:layout_weight="0.31">
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
+            <TextView
+                android:layout_weight="1"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textColor="#000" />
 
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Name"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
+            <TextView
+                android:layout_weight="1"
+                android:text="Date of last edit"
+                android:textAlignment="center"
+                android:textColor="#000" />
 
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Date of adding"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
+            <TextView
+                android:layout_weight="1"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="#000" />
+        </TableRow>
 
-                <TextView
-                    android:layout_weight="1"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="#000" />
-
-            </TableRow>
-        </ScrollView>
-    </LinearLayout>
+    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

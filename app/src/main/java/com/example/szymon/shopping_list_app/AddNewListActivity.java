@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 /**
  * Created by Szymon on 03.04.2017.
  */
@@ -21,6 +23,7 @@ public class AddNewListActivity extends AppCompatActivity {
 
         editText = (EditText)findViewById(R.id.shoppingListNameAL);
         editText.setText("Shopping List 123");
+
     }
 
     public void onClickAddProduct(View v)
@@ -28,6 +31,6 @@ public class AddNewListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddNewProduct.class);
         intent.putExtra("ExtraListName", editText.getText().toString());
         startActivity(intent);
-        android.os.Process.killProcess(android.os.Process.myPid());
+        //android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

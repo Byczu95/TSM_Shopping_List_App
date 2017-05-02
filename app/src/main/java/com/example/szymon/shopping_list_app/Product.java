@@ -1,56 +1,33 @@
 package com.example.szymon.shopping_list_app;
 
+import java.io.Serializable;
+
 /**
  * Created by Szymon on 11.04.2017.
  */
 
-public class Product {
+public class Product implements Serializable {
 
     private String nameProduct;
     private int quantityProduct;
-    private int priceProduct;
-    private String[] tagsProduct;
-    private int tagsProductSize;
+    private double priceProduct;
 
-    public Product(String _nameProduct, int _quantityProduct, int _priceProduct, String[] tags, int _tagsSize)
+    public Product(String _nameProduct) {new Product(_nameProduct,1,0);}
+    public Product(String _nameProduct, int _quantityProduct ) {new Product(_nameProduct,_quantityProduct,0);}
+    public Product(String _nameProduct, int _quantityProduct, double _priceProduct)
     {
-        tagsProductSize = _tagsSize;
         nameProduct = _nameProduct;
         quantityProduct = _quantityProduct;
         priceProduct = _priceProduct;
-        tags = new String[tagsProductSize];
     }
 
-    public Product(String _nameProduct)
-    {
-        int n = 20;
-        String[] tags = new String[n];
-        new Product(_nameProduct,1,0, tags, tags.length);
-    }
+    public String getNameProduct(){ return nameProduct; }
+    public void setNameProduct(String nameProduct){ this.nameProduct = nameProduct; }
 
-    String getNameProduct(){ return nameProduct; }
-    void setNameProduct(String nameProduct){ this.nameProduct = nameProduct; }
+    public int getQuantityProduct(){ return quantityProduct; }
+    public void setQuantityProduct(int quantityProduct){ this.quantityProduct = quantityProduct; }
 
-    int getQuantityProduct(){ return quantityProduct; }
-    void setQuantityProduct(int quantityProduct){ this.quantityProduct = quantityProduct; }
+    public double getPriceProduct(){ return priceProduct; }
+    public void setPriceProduct(double priceProduct){ this.priceProduct = priceProduct; }
 
-    int getPriceProduct(){ return priceProduct; }
-    void setPriceProduct(int priceProduct){ this.priceProduct = priceProduct; }
-
-    String[] getTagsProduct(){ return tagsProduct; }
-    void setTagsProduct(String[] tagsProduct){
-        int j = 0;
-        for(int i = 0; i <  this.tagsProduct.length; i++)
-            if(i < tagsProduct.length)
-            {
-                this.tagsProduct[i] = tagsProduct[i];
-                j++;
-            }
-            else
-                this.tagsProduct[i] = null;
-        setTagsProductSize(j);
-    }
-
-    int getTagsProductSize(){ return tagsProductSize; }
-    void setTagsProductSize(int tagsProductSize){ this.priceProduct = priceProduct; }
 }
