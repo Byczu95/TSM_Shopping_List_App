@@ -8,7 +8,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -43,8 +46,38 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
 
-        //String test = "Nazwa#02.05.2017 13:47#Chleb@1@2.5#Mleko@1@3.2";
+        i = 0;
+        for(int j = 0; j < productList.size(); j++)
+        {
+            TableRow row = new TableRow(this);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
+            row.setLayoutParams(lp);
+            TextView textViewName = new TextView(this);
+            TextView textViewDate = new TextView(this);
+            Button buttonEdit = new Button(this);
+
+            textViewName.setText(productList.get(j).getNameProductList());
+            textViewName.setPadding(5,5,5,5);
+            textViewName.setLayoutParams(lp);
+
+            textViewDate.setText(productList.get(j).getDateProductList());
+            textViewDate.setPadding(5,5,5,5);
+            textViewDate.setLayoutParams(lp);
+
+            buttonEdit.setText("Edit/Delete");
+            buttonEdit.setPadding(5,5,5,5);
+            buttonEdit.setLayoutParams(lp);
+
+            row.addView(textViewName);
+            row.addView(textViewDate);
+            row.addView(buttonEdit);
+            table.addView(row,i);
+            i++;
+        }
+
+        //String test = "Nazwa4#02.05.2017 13:47#Chleb@1@2.5#Mleko@1@3.2";
         //saveData(test);
+
 
     }
 
@@ -61,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static Integer key = 0;
     public static void saveData(String inString) {
+        key = 0;
+        while(restoreData(key.toString()) != null) //dopoki sa jakies listy w pliku
+            key++;
+
         SharedPreferences.Editor preferencesEditor = preferences.edit();
         preferencesEditor.putString(key.toString(), inString);
         preferencesEditor.commit();
@@ -69,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static String restoreData(String key) {
-        return preferences.getString(key, null); //if null to nie ma tekiej listy
+        return preferences.getString(key, null); //if null to nie ma takiej listy
     }
 }
 

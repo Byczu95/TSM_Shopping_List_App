@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,76 +47,106 @@
 
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tableALOL"
-        android:layout_width="match_parent"
-        android:layout_height="217dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.31">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_weight="1"
-                android:text="Name"
-                android:textAlignment="center"
-                android:textColor="#000" />
-
-            <TextView
-                android:layout_weight="1"
-                android:text="Date of last edit"
-                android:textAlignment="center"
-                android:textColor="#000" />
-
-            <TextView
-                android:layout_weight="1"
-                android:text="Edit"
-                android:textAlignment="center"
-                android:textColor="#000" />
-        </TableRow>
-
-    </TableLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="3">
 
-        <Button
-            android:id="@+id/buttonAddNewList"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:elevation="0dp"
-            android:onClick="onClickDoNewList"
-            android:text="Do new list" />
-
-        <Button
-            android:id="@+id/buttonQuit"
+            android:text="Name"
+            android:padding="2dp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="15sp" />
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:onClick="onClickQuit"
-            android:text="Quit" />
+            android:layout_weight="1"
+            android:text="Last edit date"
+            android:padding="2dp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Edit/Delete"
+            android:padding="2dp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="bottom|center_horizontal">
 
-        <Button
-            android:id="@+id/changeToAdd"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/tableALOL"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.01"
+                    android:orientation="horizontal">
+
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="This should be AdView"/>
-        <!--<com.google.android.gms.ads.AdView
+            android:orientation="horizontal"
+
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/buttonAddNewList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                android:onClick="onClickDoNewList"
+                android:text="Do new list" />
+
+            <Button
+                android:id="@+id/buttonQuit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:onClick="onClickQuit"
+                android:text="Quit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/changeToAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="This should be AdView" />
+            <!--<com.google.android.gms.ads.AdView
             android:id="@+id/adViewBottom"
             android:layout_width="match_parent"
             android:layout_height="49dp"
@@ -126,6 +157,6 @@
             ads:adUnitId="@string/query_activity_ad_id">
         </com.google.android.gms.ads.AdView>-->
 
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

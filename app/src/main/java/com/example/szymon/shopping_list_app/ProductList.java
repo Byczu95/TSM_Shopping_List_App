@@ -36,8 +36,8 @@ public class ProductList {
     boolean getStatusProductList(){ return _isDelete; }
     void setStatusProductList(boolean statusProductList){ this._isDelete = statusProductList; }
 
-    String getPriceProductList(){ return _lastEditDate; }
-    void setPriceProductList(String lastEditDate){ this._lastEditDate = lastEditDate; }
+    String getDateProductList(){ return _lastEditDate; }
+    void setDateProductList(String lastEditDate){ this._lastEditDate = lastEditDate; }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
