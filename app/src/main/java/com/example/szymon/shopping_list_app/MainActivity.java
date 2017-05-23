@@ -6,97 +6,102 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    static ArrayList<ProductList> productList;
-
     private static SharedPreferences preferences;
 
-    public static final String mainSplitSymbol = "#";
-    public static final String productSplitSymbol = "@";
+    private static TableLayout table;
+    private static List<Product> productList;
 
-    TableLayout table;
+    public static final String mainSplitSymbol = "#";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_lists);
+        setContentView(R.layout.activity_main);
 
-        String FileName = "dbTest";
+
+        table = (TableLayout) findViewById(R.id.TableProducts);
+        productList = new ArrayList<Product>();
+        index = 0;
+
+        String FileName = "dbTestSL";
         preferences = getSharedPreferences(FileName, Activity.MODE_PRIVATE);
-        productList = new ArrayList<>();
 
-        table = (TableLayout)findViewById(R.id.tableALOL);
-
-        Integer i = 0;
-        while(restoreData(i.toString()) != null) //dopoki sa jakies listy w pliku
-        {
-            productList.add(new ProductList(restoreData(i.toString())));
-            i++;
-        }
-
-        i = 0;
-        for(int j = 0; j < productList.size(); j++)
-        {
-            TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
-            row.setLayoutParams(lp);
-            TextView textViewName = new TextView(this);
-            TextView textViewDate = new TextView(this);
-            Button buttonEdit = new Button(this);
-
-            textViewName.setText(productList.get(j).getNameProductList());
-            textViewName.setPadding(5,5,5,5);
-            textViewName.setLayoutParams(lp);
-
-            textViewDate.setText(productList.get(j).getDateProductList());
-            textViewDate.setPadding(5,5,5,5);
-            textViewDate.setLayoutParams(lp);
-
-            buttonEdit.setText("Edit/Delete");
-            buttonEdit.setPadding(5,5,5,5);
-            buttonEdit.setLayoutParams(lp);
-
-            row.addView(textViewName);
-            row.addView(textViewDate);
-            row.addView(buttonEdit);
-            table.addView(row,i);
-            i++;
-        }
-
-        //String test = "Nazwa4#02.05.2017 13:47#Chleb@1@2.5#Mleko@1@3.2";
+        //String test = "Mleko" + mainSplitSymbol + "2";
+        //saveData(test);
+        //test = "Chleb" + mainSplitSymbol + "1";
+        //saveData(test);
+        //test = "Jajka" + mainSplitSymbol + "1";
         //saveData(test);
 
+        Integer i = 0; //Itereator po key produktach
+        String resData = restoreData(i.toString());
+
+        while (resData != null) //dopóki sa jakies produkty w pliku
+        {
+            String[] splitData = resData.split(mainSplitSymbol);
+            productList.add(new Product(splitData[0], Integer.parseInt(splitData[1])));
+            i++;
+            resData = restoreData(i.toString());
+        }
+        Log.d("bec ", "benc");
+        for (Product p: productList) {
+            addProdutToTable(p);
+        }
 
     }
 
-    public void onClickDoNewList(View v)
+    //Dodawanie produktu do tabeli
+    public static int index;
+    public void addProdutToTable(Product p)
     {
-        Intent intent = new Intent(this, AddNewListActivity.class);
-        startActivity(intent);
+        TableRow row = new TableRow(this);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
+        row.setLayoutParams(lp);
+        TextView name= new TextView(this);
+        EditText quantity = new EditText(this);
+
+        name.setText(p.getNameProduct());
+        name.setTextSize(20);
+        name.setLayoutParams(lp);
+
+        quantity.setText(String.valueOf(p.getQuantityProduct()));
+        quantity.setLayoutParams(lp);
+
+        row.addView(name);
+        row.addView(quantity);
+        row.setMinimumHeight(15);
+        row.setMinimumWidth(15);
+        row.setPadding(5,5,5,5);;
+        table.addView(row,index);
+        index++;
     }
 
-    public void onClickQuit(View v)
-    {
-        System.exit(0);
-    }
+    private static Integer key;
 
-    private static Integer key = 0;
     public static void saveData(String inString) {
         key = 0;
         while(restoreData(key.toString()) != null) //dopoki sa jakies listy w pliku
-            key++;
+            key++; // a co jak usuniesz cieciu
 
         SharedPreferences.Editor preferencesEditor = preferences.edit();
         preferencesEditor.putString(key.toString(), inString);
@@ -109,6 +114,3 @@ public class MainActivity extends AppCompatActivity {
         return preferences.getString(key, null); //if null to nie ma takiej listy
     }
 }
-
-
-

@@ -8,26 +8,20 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
-    private String nameProduct;
-    private int quantityProduct;
-    private double priceProduct;
+    private String _nameProduct;
+    private int _quantityProduct;
 
-    public Product(String _nameProduct) {new Product(_nameProduct,1,0);}
-    public Product(String _nameProduct, int _quantityProduct ) {new Product(_nameProduct,_quantityProduct,0);}
-    public Product(String _nameProduct, int _quantityProduct, double _priceProduct)
+    public Product(String nameProduct, int quantityProduct)
     {
-        nameProduct = _nameProduct;
-        quantityProduct = _quantityProduct;
-        priceProduct = _priceProduct;
+        _nameProduct = nameProduct;
+        _quantityProduct = quantityProduct;
     }
 
-    public String getNameProduct(){ return nameProduct; }
-    public void setNameProduct(String nameProduct){ this.nameProduct = nameProduct; }
+    public String getNameProduct(){ return _nameProduct; }
+    public void setNameProduct(String nameProduct){ this._nameProduct = nameProduct; }
 
-    public int getQuantityProduct(){ return quantityProduct; }
-    public void setQuantityProduct(int quantityProduct){ this.quantityProduct = quantityProduct; }
+    public int getQuantityProduct(){ return _quantityProduct; }
+    public void setQuantityProduct(int quantityProduct){ this._quantityProduct = quantityProduct; }
 
-    public double getPriceProduct(){ return priceProduct; }
-    public void setPriceProduct(double priceProduct){ this.priceProduct = priceProduct; }
 
 }
