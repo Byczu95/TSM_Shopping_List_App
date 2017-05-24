@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             i++;
             resData = restoreData(i.toString());
         }
-        Log.d("bec ", "benc");
+
         for (Product p: productList) {
             addProdutToTable(p);
         }
@@ -71,11 +74,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Dodawanie produktu do tabeli
+    public static int x = 0;
     public static int index;
     public void addProdutToTable(Product p)
     {
         TableRow row = new TableRow(this);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.MATCH_PARENT);
         row.setLayoutParams(lp);
         TextView name= new TextView(this);
         EditText quantity = new EditText(this);
@@ -86,6 +90,28 @@ public class MainActivity extends AppCompatActivity {
 
         quantity.setText(String.valueOf(p.getQuantityProduct()));
         quantity.setLayoutParams(lp);
+
+
+        quantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!s.toString().equals(""))
+                    x = Integer.parseInt(s.toString());
+
+                Toast toast = Toast.makeText(getApplicationContext(), "x = " + x, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
 
         row.addView(name);
         row.addView(quantity);
