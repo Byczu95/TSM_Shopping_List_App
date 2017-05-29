@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="0.5"
+            android:layout_weight="0.8"
             android:weightSum="1">
 
             <TextView
@@ -125,19 +125,20 @@
             android:weightSum="1">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:layout_margin="10dp"
-                android:text="harnas" />
+                android:layout_margin="5dp"
+                android:text="" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonAdd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="0.7"
+                android:onClick="buttonAddOnClick"
                 android:text="Add" />
 
         </LinearLayout>
