@@ -18,6 +18,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.InputType;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         table = (TableLayout) findViewById(R.id.TableProducts);
         productList = new ArrayList<Product>();
-        index = 0;
 
         String FileName = "dbTestSL";
         preferences = getSharedPreferences(FileName, Activity.MODE_PRIVATE);
@@ -67,32 +67,29 @@ public class MainActivity extends AppCompatActivity {
             resData = restoreData(i.toString());
         }
 
-        for (Product p: productList) {
-            addProdutToTable(p);
-        }
+        fillTable(productList);
 
     }
 
-    //Dodawanie produktu do tabeli
-    public static int x = 0;
-    public static int index;
-    public void addProdutToTable(Product p)
-    {
-        TableRow row = new TableRow(this);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.MATCH_PARENT);
-        row.setLayoutParams(lp);
-        TextView name= new TextView(this);
-        EditText quantity = new EditText(this);
+    public void appendCellName(TableRow row, String cellText){
 
-        name.setText(p.getNameProduct());
-        name.setTextSize(20);
-        name.setLayoutParams(lp);
+        TextView cell = new TextView(MainActivity.this);
+        cell.setText(cellText);
+        cell.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        cell.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1f));
+        //dodanie do wiersza
+        row.addView(cell);
+    }
 
-        quantity.setText(String.valueOf(p.getQuantityProduct()));
-        quantity.setLayoutParams(lp);
+    public void appendCellQuan(TableRow row, final Product p){
 
+        EditText cell = new EditText(MainActivity.this);
+        cell.setText(String.valueOf(p.getQuantityProduct()));
+        cell.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        cell.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        cell.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1f));
 
-        quantity.addTextChangedListener(new TextWatcher() {
+        cell.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -106,24 +103,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!s.toString().equals(""))
-                    x = Integer.parseInt(s.toString());
+                    p.setQuantityProduct(Integer.parseInt(s.toString()));
 
-                Toast toast = Toast.makeText(getApplicationContext(), "x = " + x, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "x = " + p.getQuantityProduct(), Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
 
-        row.addView(name);
-        row.addView(quantity);
-        row.setMinimumHeight(15);
-        row.setMinimumWidth(15);
-        row.setPadding(5,5,5,5);;
-        table.addView(row,index);
-        index++;
+        row.addView(cell);
+    }
+
+    public void fillTable(List<Product> productList){
+
+        //kazdy uzytkownik to wiersz z 3 kolumnami
+        for(Product p : productList){
+
+            //stworzenie wiersza
+            TableRow row = new TableRow(this);
+            row.setPadding(10,10,10,10);
+
+            //dodanie 2 kolumn
+            appendCellName(row, p.getNameProduct());
+            appendCellQuan(row, p);
+
+            //dolaczenie do widoku wiersza z kolumnami
+            table.addView(row);
+        }
     }
 
     private static Integer key;
-
     public static void saveData(String inString) {
         key = 0;
         while(restoreData(key.toString()) != null) //dopoki sa jakies listy w pliku
