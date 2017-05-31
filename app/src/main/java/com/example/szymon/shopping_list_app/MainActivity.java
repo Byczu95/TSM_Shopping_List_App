@@ -29,12 +29,18 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import android.view.*;
+
 public class MainActivity extends AppCompatActivity {
 
     private static SharedPreferences preferences;
 
     private static TableLayout table;
     private static List<Product> productList;
+    private static String[] keywords;
 
     public static final String mainSplitSymbol = "#";
 
@@ -42,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //getWindow().setSoftInputMode(       //do usuwanie focusu, nie działa
+        //        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
         table = (TableLayout) findViewById(R.id.TableProducts);
         productList = new ArrayList<Product>();
@@ -67,8 +77,14 @@ public class MainActivity extends AppCompatActivity {
             resData = restoreData(i.toString());
         }
 
+
+
+
+
         fillTable(productList);
 
+        TopAd();
+        BottomAd();
     }
 
     @Override
@@ -80,6 +96,59 @@ public class MainActivity extends AppCompatActivity {
         for (Product p: productList
                 ) {
             saveData(p.toStingWithMainSplitSymbol());
+        }
+    }
+
+    public void TopAd()
+    {
+        MobileAds.initialize(getApplicationContext(), getString(R.string.app_ad_id));
+
+        AdView mAdViewTop = (AdView) findViewById(R.id.adViewTop);
+
+        if (!BuildConfig.DEBUG) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("D60FE1B7E027ED6351991CD32F5D9841")
+                    .build();
+            mAdViewTop.loadAd(adRequest);
+        } else {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addKeyword("shopping").build();
+            mAdViewTop.loadAd(adRequest);
+        }
+    }
+
+    public void BottomAd()
+    {
+        MobileAds.initialize(getApplicationContext(), getString(R.string.app_ad_id));
+
+        AdView mAdViewBottom = (AdView) findViewById(R.id.adViewBottom);
+
+        keywords = new String[productList.size()];
+        Integer j = 0;
+        for (Product p: productList
+                ) {
+            keywords[j] = p.getNameProduct();
+            j++;
+        }
+
+        Set<String> set = new HashSet<String>();
+        int count = 0;
+        while (count < keywords.length) {
+            set.add(keywords[count]);
+            count++;
+        }
+
+        if (!BuildConfig.DEBUG) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("D60FE1B7E027ED6351991CD32F5D9841")
+                    .build();
+            mAdViewBottom.loadAd(adRequest);
+        } else {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addKeyword(set.toString().replace('[',' ').replace(']',' ')).build();
+            mAdViewBottom.loadAd(adRequest);
         }
     }
 
@@ -121,6 +190,10 @@ public class MainActivity extends AppCompatActivity {
         cell.setInputType(InputType.TYPE_CLASS_NUMBER );
         cell.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         cell.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1f));
+        //cell.clearFocus();
+        //cell.setFocusable(true);
+        //cell.setFocusableInTouchMode(true);
+
 
         cell.addTextChangedListener(new TextWatcher() {
             @Override

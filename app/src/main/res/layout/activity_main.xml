@@ -23,23 +23,18 @@
             android:orientation="vertical">
             <!--android:layout_weight="0.5"-->
 
-            <!--
+
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adViewTop"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_alignParentBottom="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="@string/query_activity_ad_id"></com.google.android.gms.ads.AdView>
-            -->
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Button" />
+                ads:adUnitId="@string/banner_ad_top_id">
+            </com.google.android.gms.ads.AdView>
+
+
         </LinearLayout>
 
         <ImageView
@@ -93,6 +88,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -104,6 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
+
         </ScrollView>
     </LinearLayout>
 
@@ -148,25 +145,17 @@
             android:layout_height="match_parent"
             android:layout_weight="0.9">
 
-            <!--
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adViewTop"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/query_activity_ad_id"></com.google.android.gms.ads.AdView>
-            -->
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button" />
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adViewBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/banner_ad_bottom_id">
+            </com.google.android.gms.ads.AdView>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

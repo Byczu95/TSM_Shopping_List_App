@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Shoppinger</string>
+    <string name="banner_ad_top_id">ca-app-pub-2288690960483253/6527906921</string>
+    <string name="banner_ad_bottom_id">ca-app-pub-2288690960483253/3420846526</string>
+    <string name="app_ad_id">ca-app-pub-2288690960483253~6667507723</string>
 </resources>
