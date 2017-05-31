@@ -211,6 +211,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     if(!s.toString().equals(""))
                         p.setQuantityProduct(Integer.parseInt(s.toString()));
+                    if(s.toString().equals(0)){
+                        //zapisać produkt z ilością 0
+                        //wywołać filltable
+                        //i wewnatrz filltable, nie dodac jesli jest 0
+
+                        //productList.remove(p);
+                        //fillTable(productList);
+                    }
                 }
                 catch (Exception e){
                     cell.setText(p.getQuantityProduct());
