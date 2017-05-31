@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         clearAllPreferences();
 
         for (Product p: productList
-             ) {
+                ) {
             saveData(p.toStingWithMainSplitSymbol());
         }
     }
