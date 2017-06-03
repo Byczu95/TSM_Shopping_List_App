@@ -23,20 +23,25 @@ import android.text.InputType;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.InterstitialAd;
 import android.view.*;
 
 public class MainActivity extends AppCompatActivity {
 
     private static SharedPreferences preferences;
+    InterstitialAd mInterstitialAd;
+
 
     private static TableLayout table;
     private static List<Product> productList;
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         TopAd();
         BottomAd();
+        VideoAd();
     }
 
     @Override
@@ -95,6 +101,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void VideoAd()
+    {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-2288690960483253/8861617728");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+        requestNewInterstitial();
+    }
     public void TopAd()
     {
         MobileAds.initialize(getApplicationContext(), getString(R.string.app_ad_id));
@@ -167,8 +186,22 @@ public class MainActivity extends AppCompatActivity {
         pName.setText("");
 
         fillTable(productList);
+        
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
     }
 
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .setBirthday(new GregorianCalendar(1990, 1, 1).getTime())
+                .addKeyword("Shopping").addKeyword("Shop")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+    }
 
     public void appendCellName(TableRow row, String cellText){
 
