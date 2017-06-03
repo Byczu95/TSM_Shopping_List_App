@@ -77,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
             resData = restoreData(i.toString());
         }
 
-
-
-
-
         fillTable(productList);
 
         TopAd();
@@ -211,13 +207,13 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     if(!s.toString().equals(""))
                         p.setQuantityProduct(Integer.parseInt(s.toString()));
-                    if(s.toString().equals(0)){
+                    if(p.getQuantityProduct() == 0){
                         //zapisać produkt z ilością 0
                         //wywołać filltable
                         //i wewnatrz filltable, nie dodac jesli jest 0
 
-                        //productList.remove(p);
-                        //fillTable(productList);
+                        productList.remove(p);
+                        fillTable(productList);
                     }
                 }
                 catch (Exception e){
@@ -240,17 +236,18 @@ public class MainActivity extends AppCompatActivity {
 
         //kazdy uzytkownik to wiersz z 3 kolumnami
         for(Product p : productList){
+            if(p.getQuantityProduct() != 0) {
+                //stworzenie wiersza
+                TableRow row = new TableRow(this);
+                row.setPadding(10, 10, 10, 10);
 
-            //stworzenie wiersza
-            TableRow row = new TableRow(this);
-            row.setPadding(10,10,10,10);
+                //dodanie 2 kolumn
+                appendCellName(row, p.getNameProduct());
+                appendCellQuan(row, p);
 
-            //dodanie 2 kolumn
-            appendCellName(row, p.getNameProduct());
-            appendCellQuan(row, p);
-
-            //dolaczenie do widoku wiersza z kolumnami
-            table.addView(row);
+                //dolaczenie do widoku wiersza z kolumnami
+                table.addView(row);
+            }
         }
     }
 
