@@ -8,21 +8,19 @@
     android:gravity="bottom|center_horizontal"
     android:weightSum="1">
 
+
     <!-- TOP -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
         android:orientation="vertical"
-        android:layout_weight="0.40"
-        android:weightSum="1">
+        android:layout_weight="0.40">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!--android:layout_weight="0.5"-->
-
+            android:orientation="horizontal">
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adViewTop"
@@ -33,17 +31,7 @@
                 ads:adSize="BANNER"
                 ads:adUnitId="@string/banner_ad_top_id">
             </com.google.android.gms.ads.AdView>
-
-
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:orientation="vertical">
-
-        </ImageView>
     </LinearLayout>
 
 
@@ -58,49 +46,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.85"
             android:orientation="horizontal"
-            android:layout_weight="0.8"
             android:weightSum="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Product"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="15sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Quantity"
-                android:padding="10dp"
+                android:layout_weight="0.4"
+                android:focusableInTouchMode="true"
+                android:padding="5dp"
+                android:text="PRODUCT NAME"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="15sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:focusableInTouchMode="true"
+                android:padding="5dp"
+                android:text="QUANTITY"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.2">
-
+            android:layout_weight="0.15">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
                 <TableLayout
                     android:id="@+id/TableProducts"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
-
         </ScrollView>
     </LinearLayout>
 
@@ -114,18 +101,19 @@
         android:weightSum="1"
         android:layout_weight="0.35">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:weightSum="1">
+            android:weightSum="3">
 
             <EditText
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:digits="aąbcćdeęfghijklłmnńoópqrsśtuvwxyzżźAĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ 1234567890"
+                android:maxLength="10"
+                android:layout_weight="0.6"
                 android:layout_margin="5dp"
                 android:text="" />
 
@@ -134,17 +122,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="0.7"
+                android:layout_weight="1.1"
+                android:background="@color/colorAccent"
                 android:onClick="buttonAddOnClick"
                 android:text="Add" />
 
+            <Button
+                android:id="@+id/buttonClearAll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1.3"
+                android:background="@android:drawable/ic_menu_delete"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="buttonClearAllOnClick"
+
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.9">
-
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adViewBottom"
