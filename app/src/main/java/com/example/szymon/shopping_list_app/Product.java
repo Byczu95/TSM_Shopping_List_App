@@ -28,8 +28,7 @@ public class Product implements Serializable {
     public int getQuantityProduct(){ return _quantityProduct; }
     public void setQuantityProduct(int quantityProduct){ this._quantityProduct = quantityProduct; }
 
-    public String toStingWithMainSplitSymbol()
-    {
+    public String toStingWithMainSplitSymbol() {
         return getNameProduct() + MainActivity.mainSplitSymbol + getQuantityProduct();
     }
 }

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -197,11 +198,23 @@ public class MainActivity extends AppCompatActivity {
         Product p = new Product();
 
         if(typeOfFormat(pName.getText().toString())) {
-            p.setNameProduct(pName.getText().toString().split("x",2)[1]);
-            p.setQuantityProduct(Integer.parseInt(pName.getText().toString().split("x",2)[0]));
+            if(!isOnList(pName.getText().toString().split("x",2)[1].toUpperCase())){
+                p.setNameProduct(pName.getText().toString().split("x",2)[1]);
+                p.setQuantityProduct(Integer.parseInt(pName.getText().toString().split("x",2)[0]));
+            }else {
+                showToast("Product " + pName.getText().toString().split("x",2)[1].toUpperCase() + " exist on the list");
+                pName.setText("");
+                return;
+            }
         }else {
-            p.setNameProduct(pName.getText().toString());
-            p.setQuantityProduct(1);
+            if(!isOnList(pName.getText().toString().toUpperCase())){
+                p.setNameProduct(pName.getText().toString());
+                p.setQuantityProduct(1);
+            }else {
+                showToast("Product " + pName.getText().toString().toUpperCase() + " exist on the list");
+                pName.setText("");
+                return;
+            }
         }
 
         productList.add(p);
@@ -245,16 +258,15 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("No", dialogClickListener).show();
     }
 
+    //Deklaracja typeOfFormat - 5xChleb czy Chleb
     public boolean typeOfFormat(String s) {
-        try
-        {
+        try {
             String[] sSplit = s.split("x",2);
             Integer.parseInt(sSplit[0]);
             return true;
         }catch (Exception e) {
             return false;
         }
-
     }
 
     //Deklaracja showToast - wiadomość dla uzytkownika
@@ -327,7 +339,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         //Dodanie wiersza z produktem
         row.addView(cell);
     }
@@ -354,7 +365,6 @@ public class MainActivity extends AppCompatActivity {
                 appendCellName(row, p.getNameProduct());
                 appendCellQuan(row, p);
 
-
                 row.setFocusableInTouchMode(true);
                 //dolaczenie do widoku wiersza z kolumnami
                 table.addView(row);
@@ -377,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Deklaracja restoreData - odczyt produktu z pliku na podstawie klucza
     public String restoreData(String key) {
-        return preferences.getString(key, null); //if null to nie ma takiej listy
+        return preferences.getString(key, null); //if null to nie ma takiego produktu
     }
 
     //Deklaracja clearAllPreferences - usunięcie zawartości pliku
@@ -396,6 +406,7 @@ public class MainActivity extends AppCompatActivity {
         showToast("List was saved");
     }
 
+    //Deklaracja restoreAllPreferences - pobranie wszsytkich produktów z pliku i dodanie ich na czystą liste
     public void restoreAllPreferences() {
         productList.clear();
 
@@ -409,5 +420,14 @@ public class MainActivity extends AppCompatActivity {
             i++;
             resData = restoreData(i.toString());
         }
+    }
+
+    //Deklaracja isOnList - false gdy nie ma takiego produktu na liscie
+    public boolean isOnList(String s) {
+        for (Product p: productList) {
+            if(p.getNameProduct().equals(s))
+                return true;
+        }
+        return false;
     }
 }
